@@ -1,0 +1,16 @@
+
+    slim:
+        image: richarvey/nginx-php-fpm:latest
+        working_dir: /var/www
+        environment:
+            docker: "true"
+            WEBROOT: /var/www/html/src/public
+        ports:
+            - 9002:80
+        volumes:
+            - $PWD/src:/var/www/html/src
+            - $PWD/config/nginx:/etc/nginx/sites-available
+#            - .:/var/www
+            - $PWD/logs:/var/log
+        privileged: true
+        #command: php -S 0.0.0.0:8090 -t public

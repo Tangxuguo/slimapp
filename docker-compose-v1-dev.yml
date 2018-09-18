@@ -1,0 +1,12 @@
+
+    slim:
+        image: php:7-alpine
+        working_dir: /var/www
+        environment:
+            docker: "true"
+        ports:
+            - 8090:8090
+        volumes:
+            - .:/var/www
+            - $PWD/logs:/var/www/logs
+        command: php -S 0.0.0.0:8090 -t src/public
